@@ -33,7 +33,6 @@ for kvp in b {
 }
 
 // or
-
 for (key, value) in b {
 	print("key is : " + key)
 	print("value is: " + value)

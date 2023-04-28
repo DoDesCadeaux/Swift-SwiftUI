@@ -1,0 +1,17 @@
+[
+	{
+		"name": "Deluxe",
+		"toppings": ["Tomato", "Mozarella", "Fresh"],
+		"image":"deluxe"
+	},
+	{
+		"name": "Meat Lovers",
+		"toppings": ["Tomato", "Mozarella", "Pepperoni"],
+		"image":"meatlovers"
+	},
+	{
+		"name": "Hawaiian",
+		"toppings": ["Tomato", "Mozarella", "Pineapple"],
+		"image":"hawaiian"
+	}
+]

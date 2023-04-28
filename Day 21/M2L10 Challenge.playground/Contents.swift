@@ -45,23 +45,23 @@ class Library {
         //
         // Returns "Not in catalogue" if the book doesn't exist
 		
+		var bookCode: String = ""
 		var bookFound: Bool = false
-		var bookId: String = ""
 		
-		for (id, book) in catalogue {
+		for (code, book) in catalogue {
 			if book.title == title {
 				bookFound = true
-				bookId = id
+				bookCode = code
 				break
 			}
 		}
-		let person = checkedOutBooks[bookId]
-		if person != nil {
-			return "Checked out by " + person!.name
-		}
 		
 		if bookFound {
-			return "Available"
+			if let borrowed = checkedOutBooks[bookCode] {
+				return "Checked out by \(borrowed.name!)"
+			} else {
+				return "Available"
+			}
 		} else {
 			return "Not in catalogue"
 		}
@@ -77,17 +77,24 @@ class Library {
         //
         // Returns "Book doesn't exist" if the book isn't in the catalogue dictionary
 		
-		let book = catalogue[bookId]
+		var bookFound: Bool = false
+		var borrowed = checkedOutBooks[bookId]
 		
-		if book == nil {
-			return "Book doesn't exist"
+		for code in catalogue {
+			if bookId == code.key {
+				bookFound = true
+				break
+			}
 		}
-		
-		if checkedOutBooks[bookId] == nil {
-			checkedOutBooks[bookId] = person
-			return "Successfully checked out"
+		if bookFound {
+			if borrowed != nil {
+				return "Error: Book already checked out"
+			} else {
+				checkedOutBooks[bookId] = person
+				return "Successfully checked out"
+			}
 		} else {
-			return "Error: Book already checked out"
+			return "Book doesn't exist"
 		}
     }
     
@@ -108,10 +115,9 @@ class Library {
 		}
 		
 		if let _ = checkedOutBooks[bookId] {
-			checkedOutBooks.removeValue(forKey: bookId)
+			checkedOutBooks[bookId] = nil
 			return "Successfully checked in"
-		}
-		else {
+		} else {
 			return "Error: Can't check in a book that hasn't been checked out"
 		}
     }

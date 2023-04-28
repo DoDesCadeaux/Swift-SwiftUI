@@ -1,0 +1,14 @@
+[
+	{
+		"name": "Napolitan",
+		"toppings": ["Tomato Sauce", "Mozarella Cheese", "Fresh Basil"]
+	},
+	{
+		"name": "Pepperoni",
+		"toppings": ["Tomato Sauce", "Mozarella Cheese", "Pepperoni"]
+	},
+	{
+		"name": "Hawaiian",
+		"toppings": ["Tomato Sauce", "Mozarella Cheese", "Pineapple"]
+	}
+]
